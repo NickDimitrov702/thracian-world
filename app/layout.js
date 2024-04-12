@@ -1,5 +1,11 @@
-import { Inter } from "next/font/google";
+import { Inter, Titillium_Web } from "next/font/google";
 import "./globals.css";
+import Navigation from "./Navigation/page";
+import SocialLinks from "./(components)/SocialLinks";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import "@fortawesome/free-brands-svg-icons";
+config.autoAddCss = false;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +17,33 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={inter.className}
+        style={{
+          backgroundColor: "#070707",
+          fontFamily: "Titillium_Web, Arial, sans-serif",
+        }}
+      >
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            position: "fixed",
+            zIndex: -1,
+            backgroundImage:
+              "url(https://cdn.midjourney.com/14fa9371-8736-45b3-80ca-697895e9fcfe/0_1.webp)",
+            fontFamily: "Titillium_Web, Arial, san-serif",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            transform: "scale(1)",
+          }}
+        ></div>
+        <div className="sticky top-20 pl-6 left-0 flex max-w-[300px] w-full ">
+          <SocialLinks />
+        </div>
+        <Navigation />
+        {children}
+      </body>
     </html>
   );
 }
